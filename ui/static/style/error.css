@@ -1,0 +1,66 @@
+body {
+    background: rgb(32, 35, 41) none repeat scroll 0% 0%;
+    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+    
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    
+    .name {
+    text-align: center;
+    margin-bottom: 1rem;
+    }
+    
+    .title {
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+    color: #ffff00;
+    }
+    
+    .info {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    }
+    
+    .artists {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    }
+    
+    .list {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    padding: 2rem;
+    }
+    
+    .text-error {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff3d00;
+    text-align: center;
+    }
+    
+    a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    margin-top: 2rem;
+    }
+    
+    a:hover {
+    color: #ffff00;
+    }

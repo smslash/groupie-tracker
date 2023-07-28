@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group List</title>
+    <link rel="icon" type="image/png" href="/static/images/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+
+<body>
+    <div class="containe bg">
+        <div class="headandtall">
+            <main class="taller">
+                <nav class="bg">
+                    <a href="/" class="logo whitel">
+                        <img src="/static/images/disc.png" alt="Logo">
+                    </a>
+                    <div class="menu">
+                        <ul>
+                            <li><a class="link white" href="http://127.0.0.1:4000">HOME</a></li>
+                            <li><a class="link white" href="http://127.0.0.1:4000/groups/">GROUPS</a></li>
+                            <li><a class="link white" href="https://01.alem.school/git/ssengerb/groupie-tracker-visualizations/src/branch/master/README.md">ABOUT</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <section class="ulbams_contain" style="justify-content: center;">
+                    <div class="ulbams">
+                        {{range $i, $v := .}}
+                        <a href="http://127.0.0.1:4000/group/?id={{.ID}}" class="ulbam_plus">
+                            <div class="ulbam_image_block">
+                                <div class="ulbam_image"><img src="{{.Image}}"></div>
+                            </div>
+                            <div class="ulbam_name_block">
+                                <div class="ulbam_name">
+                                    <div class="umbam_name_link">
+                                        <h2> {{$v.Name}} </h2>
+                                    </div>
+                                </div>
+                                <div class=section>
+                                    <span class="text-gray"> Creation Date: </span>
+                                    <span class="create_date"> {{$v.CreationDate}} </span>
+                                </div>
+                                <div class=section>
+                                    <span class="text-gray"> First Album: </span>
+                                    <span class="create_date"> {{$v.FirstAlbum}} </span>
+                                </div>
+                            </div>
+                        </a>
+                        {{end}}
+                    </div>
+                </section>
+            </main>
+            <footer class="footer">
+                <p>Copyright © 2023, <a class="custom-link" href="https://01.alem.school/git/ssengerb" target="_blank">@ssengerb</a> and
+                    <a class="custom-link" href="https://01.alem.school/git/aarmanul" target="_blank">@aarmanul</a></p>
+            </footer>
+        </div>
+    </div>
+    
+    <div class="preloader">
+        <div class="preloader__row">
+          <div class="preloader__item"></div>
+          <div class="preloader__item"></div>
+          <div class="preloader__item"></div>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            document.body.classList.add('loaded_hiding');
+            window.setTimeout(function () {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('loaded_hiding');
+            }, 500);
+            
+            slideOne();
+            slideTwo();
+            slideThree();
+            slideFour();
+        }
+        function clearDatalist() {
+          var dataList = document.getElementById('bands');
+          while (dataList.firstChild) {
+            dataList.removeChild(dataList.firstChild);
+          }
+        }
+      </script>
+</body>
+</html>

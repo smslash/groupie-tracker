@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style/group.css">
+    <title>{{.Name}}</title>
+    <link rel="icon" type="image/png" href="/static/images/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+
+<body>
+    <div class="containe bg">
+        <div class="headandtall">
+            <div class="bg">
+                <nav class="bg">
+                    <a href="/" class="logo whitel">
+                        <img src="/static/images/disc.png" alt="Logo">
+                    </a>
+                    <div class="menu">
+                        <ul>
+                            <li><a class="link white" href="http://127.0.0.1:4000">HOME</a></li>
+                            <li><a class="link white" href="http://127.0.0.1:4000/groups/">GROUPS</a></li>
+                            <li><a class="link white" href="https://01.alem.school/git/ssengerb/groupie-tracker-visualizations/src/branch/master/README.md">ABOUT</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <h1 class="big">{{.Name}}</h1>
+            <div class="blocks">
+                <div class="block card imf">
+                    <img src="{{.Image}}" alt="">
+                </div>
+                <div class="block card">
+                    <p> <span class="style_text"> Members: </span>
+                        <span>{{range .Members}}
+                            <p  class="style_contain" >{{.}}</p>
+                            {{end}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="blocks mb">
+                <div class="block card">
+                    <p> <span class="style_text"> Creation Date: </span> <span class="style_contain"> {{.CreationDate}}</span></p>
+                    <p> <span class="style_text"> First Album: </span> <span class="style_contain"> {{.FirstAlbum}} </span></p>
+                </div>
+                <div class="block card">
+                    <div class="relations">
+                        <p> <span class="style_text"> Concerts: </span> </p>
+                        <ul class="yellow__space">
+                            <span class="style_contain"> {{range $key, $value := .Relation.DatesLocations}} </span>
+                            <li  class="white__locations">
+                                <div class="white__concerts">
+                                    <span class="style_contain">{{$key}}:</span> 
+                                    <div class="white__dates">
+                                        {{range $val:=$value}}
+                                        <span class="style_contain">{{$val}}</span> 
+                                        {{end}}
+                                    </div>
+                                </div>
+                            </li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+            <footer class="footer">
+                <p>Copyright © 2023, <a class="custom-link" href="https://01.alem.school/git/ssengerb" target="_blank">@ssengerb</a> and
+                    <a class="custom-link" href="https://01.alem.school/git/aarmanul" target="_blank">@aarmanul</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function myMap() {
+            var locations = JSON.parse('{{.EncodeLoc}}');
+            console.log(locations)
+            var mapProp = {
+                center: new google.maps.LatLng(locations[0].Latitude, locations[0].Longitude),
+                zoom: 1,
+                };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+        
+            locations.forEach(function(location) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(location.Latitude, location.Longitude),
+                map: map,
+                });
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZ65aafPZP_EQ6292Zb-5_GvZsKG_RE68&callback=myMap"></script>  
+</body>
+</html>
